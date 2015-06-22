@@ -345,7 +345,10 @@ google.bookmarkbubble.Bubble.prototype.ANDROID_VERSION_USERAGENT_REGEX_ =
  * @private
  */
 google.bookmarkbubble.Bubble.prototype.isAllowedToShow_ = function() {
-  return this.isMobileSafari_() &&
+  
+  var isSupportedDevice = this.isMobileSafari_() || this.isAndroid_() || this.isBlackBerry_() || this.isPlayBook_();
+  
+  return isSupportedDevice &&
       !this.hasBeenDismissedTooManyTimes_() &&
       !this.isFullscreen_() &&
       !this.hasHashParameter();
